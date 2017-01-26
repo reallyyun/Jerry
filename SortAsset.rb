@@ -21,7 +21,7 @@ dd.each() do |fileName|
     fName = dirname + fileName
     p fName
     File.open(fName) do |f|
-      p "start scan"
+      p "start scan"+fName
       f.each("}}},") do |line|
         index = line.index ("asset\":\"")
         #"asset":"014256000011256",
