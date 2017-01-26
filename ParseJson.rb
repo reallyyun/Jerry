@@ -1,6 +1,6 @@
 
 count = 0
-limit = 3
+limit = 2000
 filenumber = 1
 dirname = "./mobiledevices/"
 dd = Dir.new(dirname)
@@ -41,7 +41,7 @@ dd.each() do |fileName|
             str = "0"
           end
           output = "output/#{fileName}_#{str}#{filenumber}.json"
-          outfile = File.new(output,"w+")
+          outfile = File.new(output, "w+")
           flag = true
           count = 0
           outfile.print ("[")
