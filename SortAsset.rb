@@ -41,17 +41,35 @@ dd.each() do |fileName|
       end
     end
   end
-
+  p assetHash.size
+  output = File.new("./#{fileName}_morethan1rate.csv","w+")
+  assetHash.each {|key, value|
+    total = 0
+    count = 0
+    value.each {|key,value|
+      if (value>1)
+        count += value
+      end
+      total += value
+    }
+    output.puts "#{key}, #{count*100.00/total}"
+  }
 end
 
-#p assetHash.keys
-assetHash.each {  |key, value|
-  p "============="
-  p key
-  output = File.new("sort/"+key+".csv","w+")
-  sorted = value.sort {|a,b| b[1]<=>a[1]}
+#writeSortedCSV
 
-  sorted.each  {|r|
-    output.puts "#{r[0]},#{r[1]}"
+
+
+def writeSortedCSV
+#p assetHash.keys
+  assetHash.each {  |key, value|
+    p "============="
+    p key
+    output = File.new("sort/"+key+".csv","w+")
+    sorted = value.sort {|a,b| b[1]<=>a[1]}
+
+    sorted.each  {|r|
+      output.puts "#{r[0]},#{r[1]}"
+    }
   }
-}
+end
